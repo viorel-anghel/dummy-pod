@@ -3,6 +3,8 @@
 This is a container which can be used for various debug tasks in Docker and Kubernetes. 
 It is designed to contain many useful tools or you can extend it if needed.
 
+You can run it as a container in Docker or as a pod in Kubernetes then `exec` into it and use tools like netcat or mysql client "inside". It is also listenting on port 8080 portocol http so you can check that.
+
 ## To build it
 
 ```
@@ -23,6 +25,9 @@ The default port inside container is 8080 and the default message is "ok". Those
 docker run -d  -e TEXT=nobine -e PORT=8181 -p 6789:8181 --name dummy dummy:$TAG
 curl http://localhost:6789/
 ```
+
+## cgi-bins
+The container includes some small scripts which can be accessed with URLs like `http://localhost:6789/cgi-bin/status`. For others see the directory cgi-bin here.
 
 ## Using it in kubernetes
 
