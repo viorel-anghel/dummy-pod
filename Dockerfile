@@ -17,8 +17,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install redis-tools
 
 RUN adduser --shell /bin/bash --disabled-password --gecos '' user
 
-COPY startup.sh /home/user/startup.sh
-RUN chmod 755 /home/user/startup.sh
+COPY startup.sh /startup.sh
+RUN chmod 755 /startup.sh
 
 RUN rm /var/www/html/index.mini-httpd.html && \
   echo ok >/var/www/html/index.html && chown user /var/www/html/index.html
@@ -29,7 +29,7 @@ RUN chmod 755 /var/www/html/cgi-bin/*
 USER user
 WORKDIR /home/user
 
-ENTRYPOINT ["/home/user/startup.sh" ]
+ENTRYPOINT ["/startup.sh" ]
 
 # docker build -t dummy:0.1 .
 # docker run -d  -p 6789:80 --name dummy dummy:0.1
