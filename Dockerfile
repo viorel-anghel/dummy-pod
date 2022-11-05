@@ -29,9 +29,10 @@ RUN chmod 755 /var/www/html/cgi-bin/*
 USER user
 WORKDIR /home/user
 
+EXPOSE 8080
 ENTRYPOINT ["/startup.sh" ]
 
 # docker build -t dummy:0.1 .
-# docker run -d  -p 6789:80 --name dummy dummy:0.1
+# docker run -d  -p 6789:8080 --name dummy dummy:0.1
 # curl http://localhost:6789/cgi-bin/status
 

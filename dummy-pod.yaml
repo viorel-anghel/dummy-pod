@@ -6,10 +6,5 @@ metadata:
 spec:
   containers:
     - name: dummy
-      image: vvang/dummy:0.6
-      env:
-        - name: PORT
-          value: 8080
-        - name: TEXT
-          value: "ok"
+      image: vvang/dummy:x86
 
