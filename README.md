@@ -5,6 +5,12 @@ It is designed to contain many useful tools or you can extend it if needed.
 
 You can run it as a container in Docker or as a pod in Kubernetes then `exec` into it and use tools like netcat or mysql client "inside". It is also listenting on port 8080 portocol http so you can check that.
 
+## To build ir on arm Macbook
+
+```
+docker buildx build --platform linux/amd64 --push -t vvang/dummy:amd64  . 
+```
+
 ## To build it
 
 ```

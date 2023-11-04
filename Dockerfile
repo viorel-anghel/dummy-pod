@@ -15,6 +15,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-client
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql-client
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install redis-tools
 
+# for azure storageclass azurefile RWX
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install cifs-utils
+
 RUN adduser --shell /bin/bash --disabled-password --gecos '' user
 
 COPY startup.sh /startup.sh
