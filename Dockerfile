@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:24.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -q --fix-missing && \
   apt-get -y upgrade && apt-get -y install apt-utils
@@ -26,7 +26,7 @@ RUN adduser --shell /bin/bash --disabled-password --gecos '' user
 COPY startup.sh /startup.sh
 RUN chmod 755 /startup.sh
 
-RUN rm /var/www/html/index.mini-httpd.html && \
+RUN touch /var/www/html/index.mini-httpd.html && rm /var/www/html/index.mini-httpd.html && \
   echo ok >/var/www/html/index.html && chown user /var/www/html/index.html
 RUN mkdir -p /var/www/html/cgi-bin
 COPY cgi-bin/ /var/www/html/cgi-bin
