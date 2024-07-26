@@ -7,4 +7,8 @@ spec:
   containers:
     - name: dummy
       image: vvang/dummy:x86
+# optional
+      securityContext:
+        privileged: true
+        runAsUser: 0
 

@@ -5,7 +5,7 @@ It is designed to contain many useful tools or you can extend it if needed.
 
 You can run it as a container in Docker or as a pod in Kubernetes then `exec` into it and use tools like netcat or mysql client "inside". It is also listenting on port 8080 portocol http so you can check that.
 
-## To build ir on arm Macbook
+## To build it on arm Macbook
 
 ```
 docker buildx build --platform linux/amd64 --push -t vvang/dummy:amd64  . 
@@ -14,7 +14,7 @@ docker buildx build --platform linux/amd64 --push -t vvang/dummy:amd64  .
 ## To build it
 
 ```
-export TAG=0.7
+export TAG=0.3
 docker build -t dummy:$TAG .
 ```
 
@@ -38,11 +38,12 @@ The container includes some small scripts which can be accessed with URLs like `
 
 ## Using it in kubernetes
 
-You will need to push it to an image repository. If you wish to use my container from docker hub, try the name `vvang/dummy:0.7` or whatever tag is listed at https://hub.docker.com/r/vvang/dummy
+You will need to push it to an image repository. If you wish to use my container from docker hub, 
+try the name `vvang/dummy:0.3` or whatever tag is listed at https://hub.docker.com/r/vvang/dummy
 
 You can just create the pod with an imperative command:
 ```
-kubectl run dummy --image=vvang/dummy:0.7  # optional -n namespace
+kubectl run dummy --image=vvang/dummy:0.3  # optional -n namespace
 ```
 
 Or you can use the provided yaml file which also shows the use of environment variables and other goodies.
