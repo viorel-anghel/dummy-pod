@@ -21,6 +21,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install cifs-utils
 # lol there was a case when I needed this
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install openssh-client
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install jq 
+
+# kubectl
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
 RUN adduser --shell /bin/bash --disabled-password --gecos '' user
 
 COPY startup.sh /startup.sh
