@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
     - name: dummy
-      image: vvang/dummy:x86
+      image: vvang/dummy:amd64
 # optional
       securityContext:
         privileged: true

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: dummy
+  namespace: default
+  labels:
+    app: dummy
+spec:
+  serviceName: dummy
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dummy
+  template:
+    metadata:
+      labels:
+        app: dummy
+    spec:
+      containers:
+        - name: dummy
+          image: vvang/dummy:amd64
+          securityContext:
+            privileged: true
+            runAsUser: 0
+          volumeMounts:
+            - name: dummy-data
+              mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: dummy-data
+        labels:
+          app: dummy
+      spec:
+        accessModes: 
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+
